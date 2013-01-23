@@ -1,16 +1,17 @@
+require 'pp'
+
 class FormValidator
-  def initialize(app) # middleware needs this
-    @app = app
-  end
-  # build test controller
-  # research rack rspec
-  # research object param
-  # cucumber acceptance test
-  # start server
-  # curl request
-  # parse response
-  #
-  def call(env)
-    [200, {"Content-Type" => "text/plain"}, ['Hello World']]
-  end
+ def initialize(app)
+   @app = app
+ end
+
+ # display form post data
+ 
+ def call(env)
+   request = Rack::Request.new(env)
+   response = Rack::Response.new(["I HATE YOU WORLD"],200)
+   p request.params
+   return response
+ end
+ 
 end
