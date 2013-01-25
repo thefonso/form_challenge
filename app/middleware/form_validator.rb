@@ -12,23 +12,23 @@ class FormValidator
 
    
    # return request
-   pp "HELLO THERE!!!!!!"
    # pp request # whole object
-   # pp request.env["HTTP_VERSION"]
-   pp request.env.fetch("rack.request.form_hash", {}).fetch("post", {})["name"]
+   # pp request.env["rack.request.form_hash"]
+   # pp request.env.fetch("rack.request.form_hash", {}).fetch("post", {})["name"]
    
 
-   if request.env["REQUEST_PATH"] == '/'
+   if request.env["rack.request.form_hash"] != nil
      
      # look for specifc params field
+     pp request.env.fetch("rack.request.form_hash", {}).fetch("post", {})["name"]
+
      # do stuff for security check
+     
+     
      # then pass on to rails app
-     # response = Rack::Response.new(["hello"],200)
-     # pp env
-     # return response
-     p "Hi from inside rack!!!!!!!!!!!!!!"
      @app.call(env)
    else
+     p "nil indicator here !!!!!!!"
      @app.call(env)
    end
    
