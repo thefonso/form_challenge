@@ -4,7 +4,11 @@ class FormValidator
  def initialize(app)
    @app = app
  end
- 
+
+ def not_found
+   raise ActionController::RoutingError.new('Forgot to enter your age....hit the browser back button')
+ end
+
  def call(env)
    request = Rack::Request.new(env)
 
@@ -20,7 +24,8 @@ class FormValidator
 
      # if age field is not empty
      if /\d+/.match(age_value) == nil
-        age_value = "enter your age"
+        #redirect to 404 error
+       not_found
      else
 
      end
