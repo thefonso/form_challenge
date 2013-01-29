@@ -12008,3 +12008,111 @@ ActionController::RoutingError (Not Found):
 
 
   Rendered /Users/aleph/.rvm/gems/ruby-1.9.2-p320/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2013-01-28 17:45:46 -0600
+Connecting to database specified by database.yml
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (9.6ms)
+  Rendered posts/new.html.erb within layouts/application (48.4ms)
+Completed 200 OK in 165ms (Views: 91.4ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-01-28 17:45:47 -0600
+Served asset /scaffolds.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-01-28 17:45:47 -0600
+Served asset /jquery.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-01-28 17:45:47 -0600
+Served asset /home.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-01-28 17:45:47 -0600
+Served asset /posts.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-01-28 17:45:47 -0600
+Served asset /home.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-01-28 17:45:47 -0600
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-01-28 17:45:47 -0600
+Served asset /jquery_ujs.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-01-28 17:45:47 -0600
+Served asset /posts.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-01-28 17:45:47 -0600
+Served asset /application.js - 304 Not Modified (13ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2013-01-28 17:46:29 -0600
+
+ActionController::RoutingError (Forgot to enter your age....hit the browser back button):
+  app/middleware/form_validator.rb:9:in `not_found'
+  app/middleware/form_validator.rb:28:in `call'
+
+
+  Rendered /Users/aleph/.rvm/gems/ruby-1.9.2-p320/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2013-01-28 17:46:37 -0600
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iNQAS1U8J/IM6h+wO0oKj8sdxgnGqZEvm1MKWzk+G5A=", "post"=>{"name"=>"alfonso", "title"=>"mage_in_training", "content"=>"science", "age"=>"40"}, "commit"=>"Create Post"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (54.0ms)[0m  INSERT INTO "posts" ("age", "content", "created_at", "name", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["age", 40], ["content", "science"], ["created_at", Mon, 28 Jan 2013 23:46:37 UTC +00:00], ["name", "alfonso"], ["title", "mage_in_training"], ["updated_at", Mon, 28 Jan 2013 23:46:37 UTC +00:00]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/posts/40
+Completed 302 Found in 68ms (ActiveRecord: 59.0ms)
+
+
+Started GET "/posts/40" for 127.0.0.1 at 2013-01-28 17:46:37 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"40"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", "40"]]
+  Rendered posts/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 11ms (Views: 7.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-01-28 17:46:37 -0600
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-01-28 17:46:37 -0600
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-01-28 17:46:37 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-01-28 17:46:37 -0600
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-01-28 17:46:37 -0600
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-01-28 17:46:37 -0600
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-01-28 17:46:37 -0600
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-01-28 17:46:37 -0600
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-01-28 17:46:37 -0600
+Served asset /application.js - 304 Not Modified (0ms)
