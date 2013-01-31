@@ -1,46 +1,44 @@
 require 'pp'
 
 class FormValidator
- def initialize(app)
-   @app = app
- end
+  def initialize(app)
+    @app = app
+  end
 
- def call(env)
-   request = Rack::Request.new(env)
+  def call(env)
+    request = Rack::Request.new(env)
 
-   # return request
-   # pp request # whole object
-   # pp request.env["rack.request.form_hash"]
-      age_value = request.env.fetch("rack.request.form_hash", {}).fetch("post", {})["age"]
-      name_value = request.env.fetch("rack.request.form_hash", {}).fetch("post", {})["name"]
-      title_value = request.env.fetch("rack.request.form_hash", {}).fetch("post", {})["title"]
-      content_value = request.env.fetch("rack.request.form_hash", {}).fetch("post", {})["content"]
+    items = [age,name,title,content]
+    for items.each do |thing|
+      # how to abstract this?
+      field_name = "age"
+      formbox_value = request.env.fetch("rack.request.form_hash", {}).fetch("post", {})[field_name]
+
+      # How am I calling the YML file?
+
       pp "LOOK AT ME !!!!!!!!!!!!!!!!!"
-      pp name_value
-      pp title_value
-      pp content_value
-      pp age_value
+      pp formbox_value
 
+      # TODO abstract these things out so that you can create a hash and then serializ the Hash.
+      # You want to eventually pull all this out and offer it as middleware anyone can use.
+      # part 1 - kill duplication
+      # part 2 - pull things out into yml file
       # if the form is not empty
-   if request.env["rack.request.form_hash"] != nil
+      if request.env["rack.request.form_hash"] != nil
 
-    # if name is empty send error
-     if name_value == ""
-      raise ActionController::RoutingError.new('Forgot to enter your name....hit the browser back button')
-     elsif title_value == ""
-      raise ActionController::RoutingError.new('Enter your title....hit the browser back button')
-     elsif content_value == ""
-      raise ActionController::RoutingError.new('Please enter some content....hit the browser back button')
-     elsif /\d+/.match(age_value) == nil
-       raise ActionController::RoutingError.new('Forgot to enter your age....hit the browser back button')
-     end
+        # if name is empty send error
+        if formbox_value == ""
+          raise ActionController::RoutingError.new('Forgot to enter your #{field_name}....hit the browser back button')
+        elsif formbox_value= /\d+/.match(age_value) == nil
+          raise ActionController::RoutingError.new('Forgot to enter your age....hit the browser back button')
+        end
 
-     @app.call(env)
+        @app.call(env)
 
-   else
-     p "nil indicator here !!!!!!!"
-     @app.call(env)
-   end
-
- end
+      else
+        p "nil indicator here !!!!!!!"
+        @app.call(env)
+      end
+    end
+  end
 end

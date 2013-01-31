@@ -2,9 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3'
 gem 'exception_notification_rails3'
 
@@ -23,6 +20,7 @@ end
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'rspec-rails'
 end
 
 gem 'jquery-rails'
