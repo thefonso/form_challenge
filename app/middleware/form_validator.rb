@@ -35,11 +35,12 @@ class FormValidator
        raise ActionController::RoutingError.new('Forgot to enter your age....hit the browser back button')
      end
 
-     @app.call(env)
-
+     response = @app.call(env)
+     return response
    else
      p "nil indicator here !!!!!!!"
-     @app.call(env)
+     response = @app.call(env)
+     return response
    end
 
  end
