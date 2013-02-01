@@ -6,8 +6,8 @@ class FormValidator
  end
 
  def call(env)
-   request = Rack::Request.new(env)
-
+   # request = Rack::Request.new(env)
+   request = Rack::MockRequest.env_for("/")
    # return request
    # pp request # whole object
    # pp request.env["rack.request.form_hash"]
