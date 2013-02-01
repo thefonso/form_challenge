@@ -1,0 +1,5 @@
+#yaml file for form validator Rack middleware
+blog/new:
+  name: string
+  age: number
+  content: string

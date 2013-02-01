@@ -25,11 +25,11 @@ class FormValidator
    if request.env["rack.request.form_hash"] != nil
 
     # if name is empty send error
-     if name_value == ""
+     if /\w/.match(name_value) == ""
       raise ActionController::RoutingError.new('Forgot to enter your name....hit the browser back button')
-     elsif title_value == ""
+     elsif /\w/.match(title_value) == ""
       raise ActionController::RoutingError.new('Enter your title....hit the browser back button')
-     elsif content_value == ""
+     elsif /\w/.match(content_value) == ""
       raise ActionController::RoutingError.new('Please enter some content....hit the browser back button')
      elsif /\d+/.match(age_value) == nil
        raise ActionController::RoutingError.new('Forgot to enter your age....hit the browser back button')
