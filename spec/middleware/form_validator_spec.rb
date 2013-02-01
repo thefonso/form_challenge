@@ -8,7 +8,7 @@ describe FormValidator do
   let(:formvalidator) {FormValidator.new}
 
   def request!(other_env)
-    @status, @headers, @response = Rails.application.call(env.merge(other_env))
+    @status, @headers, @response = Rails.form_challenge.call(env.merge(other_env))
   end
 
   xit 'should exist' do
